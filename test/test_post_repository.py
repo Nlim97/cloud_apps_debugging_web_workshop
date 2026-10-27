@@ -13,6 +13,7 @@ class TestPostRepository:
         post_repository.create(post)
         posts = post_repository.all()
         assert len(posts) == 6
+        #breakpoint()
         assert posts[5].title == "Title"
         assert posts[5].content == "Content"
         assert posts[5].tags == ["tag"]
