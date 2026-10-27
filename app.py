@@ -17,12 +17,12 @@ def index():
     return render_template('index.html', posts=posts)
 
 # get posts for a given tag
-@app.route('/tag/<tag>', methods=['POST'])
+@app.route('/tag/<tag>', methods=['GET'])
 def posts_by_tag(tag):
     connection = get_flask_database_connection(app)
     post_repository = PostRepository(connection)
     # For now, let's get all posts since the repository doesn't have all_posts_by_tag yet
-    posts = post_repository.all()
+    posts = post_repository.find_by_tag(tag)
     return render_template('index.html', posts=posts)
 
 # create new post
